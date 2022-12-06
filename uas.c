@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#define MAX_LINE_LENGTH 5000
 struct data{
     int id;
     char nama[50];
@@ -24,6 +24,7 @@ int menu(){
 int main(){
 
     FILE *fp;
+    char line[MAX_LINE_LENGTH];
 	struct data dosen[100];
 	int i, j, banyak, total, pilih, id;
 	
@@ -54,7 +55,17 @@ int main(){
 			break;
 			
 			case 2:
-                if (total == 0){
+                system("clear");
+                printf("\nData sebelumnya : \n\n");
+                fp = fopen("datadosen.txt", "r");
+                if(fp != NULL){
+                    while(fgets(line, MAX_LINE_LENGTH, fp)){
+                        printf("%s", line);
+                    }
+                }
+                fclose(fp);
+                printf("-----------------------\n\n");
+                if (total == 0 && fp == NULL){
                     printf("Data masih kosong!\nSilahkan tambahkan data terlebih dahulu!\n\n");
                 }
                 else{
@@ -67,27 +78,34 @@ int main(){
                 }
             break;
             case 3:
-                printf("Masukan ID yang ingin dihapus : ");
-                scanf("%d", &id);
-                for (i = 0; i < total; i++){
-                    if (dosen[i].id == id){
-                        for (j = i; j < total; j++){
-                            dosen[j] = dosen[j+1];
+                if (total == 0){
+                    printf("\nData sekarang kosong!, Jika ada data berarti data sebelumnya.\n");
+                    printf("Masukan data terlebih dahulu!\n\n");
+                }
+                else{
+                    printf("Masukan ID yang ingin dihapus : ");
+                    scanf("%d", &id);
+                    for (i = 0; i < total; i++){
+                        if (dosen[i].id == id){
+                            for (j = i; j < total; j++){
+                                dosen[j] = dosen[j+1];
+                            }
+                            total--;
+                            printf("Data berhasil dihapus!\n\n");
+                            break;
                         }
-                        total--;
-                        printf("Data berhasil dihapus!\n\n");
-                        break;
-                    }
-                    else{
-                        printf("Data tidak ditemukan!\n\n");
+                        else{
+                            printf("Data tidak ditemukan!\n\n");
+                        }
                     }
                 }
+                
 		}
 		
 	} while (pilih != 0);
     system("clear");
 	printf("Terima kasih!\n");
-    fp = fopen("jajal.txt", "w+");
+    fp = fopen("dataterbaru.txt", "w+");
     for (i = 0; i < total; i++) {
         fprintf(fp,"Data ke-%d\n", i+1);
         fprintf(fp,"ID : %d\n", dosen[i].id);
