@@ -14,7 +14,9 @@
 2. Lihat Data
 3. Hapus Data
 4. Cari Data
-5. Sort Data
+5. Sort Data Berdasarkan Nomor
+6. Sort Data Berdasarkan Provinsi
+7. Total Data Per Provinsi (Case Sensitive)
 0. Keluar
 ```
 
