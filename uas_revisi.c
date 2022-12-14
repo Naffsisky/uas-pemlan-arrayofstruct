@@ -116,7 +116,7 @@ int main(){
 void tambah(){
     printf("Tambah Data\n");
     FILE *file;
-    file = fopen("anjay.txt", "a");
+    file = fopen("myfaskes.txt", "a");
     if (file == NULL){
         printf("Error opening file.\n");
     }
@@ -142,7 +142,7 @@ void tambah(){
 
 void puskes(){
     FILE *file;
-    file = fopen("anjay.txt", "r"); 
+    file = fopen("myfaskes.txt", "r"); 
 
     if (file == NULL){
         printf("Error opening file.\n");
@@ -189,7 +189,7 @@ void puskes(){
 void hapus(){
     printf("-- MENGHAPUS DATA --\n");
     FILE *file;
-    file = fopen("anjay.txt", "r");
+    file = fopen("myfaskes.txt", "r");
     if (file == NULL){
         printf("Error opening file.\n");
     }
@@ -257,7 +257,7 @@ void hapus(){
     printf("Terbaca %d data.\n", records);
     printf("--------------------------------------------------------------------------------------------------------------------\n");
     printf("Data berhasil dihapus!\n\n");
-    file = fopen("anjay.txt", "w");
+    file = fopen("myfaskes.txt", "w");
     for (int i = 0; i < records; i++){
         fprintf(file, "%d,%s,%s,%s,%s\n", medical[i].no, medical[i].prov, medical[i].tipe, medical[i].nama, medical[i].alamat);
     }
@@ -267,7 +267,7 @@ void hapus(){
 void cari(){
     printf("-- MENCARI DATA --\n");
     FILE *file;
-    file = fopen("anjay.txt", "r");
+    file = fopen("myfaskes.txt", "r");
     if (file == NULL){
         printf("Error opening file.\n");
     }
@@ -331,7 +331,7 @@ void cari(){
 void sort(){
     printf("-- MENGURUTKAN DATA --\n");
     FILE *file;
-    file = fopen("anjay.txt", "r");
+    file = fopen("myfaskes.txt", "r");
     if (file == NULL){
         printf("Error opening file.\n");
     }
@@ -374,7 +374,7 @@ void sort(){
     printf("Terbaca %d data.\n", records);
     printf("--------------------------------------------------------------------------------------------------------------------\n");
     printf("Data berhasil diurutkan!\n\n");
-    file = fopen("anjay.txt", "w");
+    file = fopen("myfaskes.txt", "w");
     for (int i = 0; i < records; i++){
         for (int j = 0; j < records; j++){
             if (medical[i].no < medical[j].no){
