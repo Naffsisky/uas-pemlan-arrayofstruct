@@ -17,6 +17,7 @@ void cari();
 void sort_id();
 void sort_prov();
 void total_prov();
+void total_detail();
 
 int main(){
     int pilih;
@@ -35,7 +36,8 @@ int main(){
     printf("4. Cari Data\n");
     printf("5. Sort Data Berdasarkan Nomor\n");
     printf("6. Sort Data Berdasarkan Provinsi\n");
-    printf("7. Total Data Per Provinsi (Case Sensitive)\n");
+    printf("7. Mencari Puskesmas pada provinsi tertentu (Case Sensitive)\n");
+    printf("8. Total Puskemas Per Provinsi\n");
     printf("0. Keluar\n");
     printf("Pilih : ");
     scanf("%d", &pilih);
@@ -120,6 +122,19 @@ int main(){
         break;
         case 7:
             total_prov();
+            printf("Apakah anda ingin kembali ke menu?\n");
+            printf("1. Ya\n");
+            printf("2. Tidak\n");
+            printf("Pilih : ");
+            scanf("%d", &pilih);
+            if (pilih == 1){
+                main();
+            } else {
+                return 0;
+            }
+        break;
+        case 8:
+            total_detail();
             printf("Apakah anda ingin kembali ke menu?\n");
             printf("1. Ya\n");
             printf("2. Tidak\n");
@@ -552,4 +567,70 @@ void total_prov(){
     printf("--------------------------------------------------------------------------------------------------------------------\n");
     printf("Data berhasil ditampilkan!\n\n");
     printf("Total data provinsi %s adalah %d\n", prov, count);
+}
+
+void total_detail(){
+  printf("--- Data Puskesmas ---\n");
+    FILE *file;
+    file = fopen("myfaskes.txt", "r"); 
+
+    if (file == NULL){
+        printf("Error opening file.\n");
+    }
+
+    Data medical[100];
+    int read = 0;
+    int records = 0;
+    int i;
+
+    do{
+        read = fscanf(file,
+                        "%d,%100[^,],%100[^,],%100[^,],%100[^\n]\n",          
+                        &medical[records].no, 
+                        medical[records].prov, 
+                        medical[records].tipe, 
+                        medical[records].nama,
+                        medical[records].alamat);
+        if (read == 5) records++;
+
+        if (read != 5 && !feof(file)){
+        printf("File format incorrect.\n\n");
+        }
+        if (ferror(file)){
+        printf("Error reading file.\n\n");
+        }
+    } while (!feof(file));
+    fclose(file);
+    printf("\nMembaca %d data.\n\n", records);
+    printf("--------------------------------------------------------------------------------------------------------------------\n");
+    printf("  No\t\t   Prov\t\t  Tipe\t\t    Nama\t\t\t\tAlamat\n");
+    printf("--------------------------------------------------------------------------------------------------------------------\n");
+    for (int i = 0; i < records; i++){
+        printf("%d    \t%s  \t%s  \t%s         \t\t%s\n", 
+            medical[i].no, 
+            medical[i].prov,
+            medical[i].tipe,
+            medical[i].nama,
+            medical[i].alamat);
+    }
+    printf("\n");
+    printf("Terbaca %d data.\n", records);
+    printf("--------------------------------------------------------------------------------------------------------------------\n");
+    printf("Banyaknya data Puskesmas perprovinsi\n\n");
+    printf("Provinsi\t\t Jumlah\n");
+    printf("--------------------------------------------------------------------------------------------------------------------\n");
+    int count = 1;
+    for (int i=0; i<records; i++){
+      for (int j=i+1; j<records; j++){
+        if (strcmp(medical[i].prov, medical[j].prov) == 0 && (strcmp(medical[j].prov, "0") != 0)){
+          count = count + 1;
+          strcpy(medical[j].prov, "0");
+        }
+      }
+      if (strcmp(medical[i].prov, "0") != 0){
+        printf("%s\t\t %d\n", medical[i].prov, count);
+      }
+      count = 1;
+    }
+    printf("--------------------------------------------------------------------------------------------------------------------\n");
 }
