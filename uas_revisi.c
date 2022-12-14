@@ -17,7 +17,6 @@ void cari();
 void sort_id();
 void sort_prov();
 void total_prov();
-void total_prov_terbanyak();
 
 int main(){
     int pilih;
