@@ -38,8 +38,8 @@
 10302102,Jawa Barat,Puskesmas,Cigugur,Jl. Rh Abdul Halim No. 199
 10302103,Jawa Barat,Puskesmas,Cimahi   ,Jl. Kebon Manggu No. 352
 10302201,Jawa Barat,Puskesmas,Cimahi Selatan,Jl. Baros No. 16
-10001,   Aceh  ,Puskesmas,Langsa Lama,Gampong Meurandeh Dayah
-2370002, Sulawesi,Puskesmas,Wara Utara,Jl. Dr. Ratulangi
+10001,Nanggroe Aceh,Puskesmas,Langsa Lama,Gampong Meurandeh Dayah
+2370002,Sulawesi,Puskesmas,Wara Utara,Jl. Dr. Ratulangi
 11120501,Jawa Tengah,Puskesmas,Binangun,A Yani No 15
 13010401,Jawa Timur,Puskesmas,Sawoo   ,Jl. Sunan Kumbul No.841
 ```
