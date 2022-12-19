@@ -10,13 +10,18 @@
 
 ## MENU
 ```
+--- MENU ---
 1. Tambah Data
 2. Lihat Data
 3. Hapus Data
-4. Cari Data
+4. Cari Data Berdasarkan Nomor
 5. Sort Data Berdasarkan Nomor
 6. Sort Data Berdasarkan Provinsi
-7. Total Data Per Provinsi (Case Sensitive)
+7. Cari Data Berdasarkan Provinsi (Case Sensitive)
+8. Total Puskemas Per Provinsi
+9. Provinsi dengan jumlah Puskesmas terbanyak
+10. Provinsi dengan jumlah Puskesmas tersedikit
+11. Sort Data Berdasarkan Tipe
 0. Keluar
 ```
 
