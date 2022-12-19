@@ -13,10 +13,12 @@
 1. Tambah Data
 2. Lihat Data
 3. Hapus Data
-4. Cari Data
+4. Cari Data Berdasarkan Nomor
 5. Sort Data Berdasarkan Nomor
 6. Sort Data Berdasarkan Provinsi
-7. Total Data Per Provinsi (Case Sensitive)
+7. Sort Data Berdasarkan Tipe
+8. Cari Data Berdasarkan Provinsi (Case Sensitive)
+9. Total Puskemas Per Provinsi
 0. Keluar
 ```
 
